@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buggy Video Streamer</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>🎥 Buggy Video Streamer</h1>
+        
+        <div class="upload-section">
+            <h2>Subir Video</h2>
+            <form id="uploadForm">
+                <input type="file" id="videoFile" accept="video/mp4" required>
+                <button type="submit">Subir Video</button>
+            </form>
+            <div id="uploadStatus"></div>
+        </div>
+
+        <div class="videos-section">
+            <h2>Videos Disponibles</h2>
+            <div id="videoList"></div>
+        </div>
+
+        <div class="player-section">
+            <h2>Reproductor</h2>
+            <video id="videoPlayer" controls style="display: none; width: 100%; max-width: 800px;">
+                Tu navegador no soporta video.
+            </video>
+        </div>
+
+        <div class="debug-section">
+            <h2>Debug Info</h2>
+            <button id="debugBtn">Mostrar Debug</button>
+            <pre id="debugInfo"></pre>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

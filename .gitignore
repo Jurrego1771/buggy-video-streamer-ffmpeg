@@ -82,7 +82,7 @@ dist
 
 # Gatsby files
 .cache/
-public
+# public - REMOVED: Our public folder contains source files, not build artifacts
 
 # Storybook build outputs
 .out
