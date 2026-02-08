@@ -1,0 +1,16 @@
+# CODEOWNERS
+# Este archivo define quiénes son los propietarios del código
+# y serán automáticamente solicitados como revisores en los PRs
+
+# Propietarios por defecto de todo el repositorio
+* @cristiandimas @jurrego1771
+
+# Archivos específicos
+/server.js @cristiandimas @jurrego1771
+/public/* @cristiandimas @jurrego1771
+/package.json @cristiandimas @jurrego1771
+
+# Documentación
+*.md @cristiandimas @jurrego1771
+/BUGLOG.md @cristiandimas @jurrego1771
+/README.md @cristiandimas @jurrego1771

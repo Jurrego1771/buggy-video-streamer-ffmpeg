@@ -1,0 +1,50 @@
+name: PR Checks
+
+on:
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 📥 Checkout code
+      uses: actions/checkout@v3
+      
+    - name: 🟢 Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+        cache: 'npm'
+        
+    - name: 📦 Install dependencies
+      run: npm ci
+      
+    - name: 🔍 Check for syntax errors
+      run: node -c server.js
+      
+    - name: ✅ Run tests (if available)
+      run: npm test --if-present
+      continue-on-error: true
+      
+    - name: 📊 PR Info
+      run: |
+        echo "✨ PR #${{ github.event.pull_request.number }}"
+        echo "👤 Author: ${{ github.event.pull_request.user.login }}"
+        echo "📝 Title: ${{ github.event.pull_request.title }}"
+        
+  auto-assign-reviewers:
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: 👥 Auto-assign reviewers
+      uses: actions/github-script@v6
+      with:
+        script: |
+          github.rest.pulls.requestReviewers({
+            owner: context.repo.owner,
+            repo: context.repo.repo,
+            pull_number: context.issue.number,
+            reviewers: ['cristiandimas', 'jurrego1771']
+          })
